@@ -1,0 +1,12 @@
+Asynchronous Programming - it is a way for a computer program to handle multiple
+tasks simultaneously rather than executing them one after the other ,
+continue working on other tasks while waiting for other tasks such as network requests.
+
+Future - an object that represents a potential value or error that will be
+available at some point in the future
+
+
+
+Concurrency and Isolates -
+All dart code runs in isolates . Which are similar to threads but differ in that
+isolates have their owns isolated memory. Threads share memory Isolates do not.

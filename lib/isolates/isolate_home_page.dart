@@ -40,9 +40,9 @@ class IsolateHomePage extends StatelessWidget {
                 // SO UI IS NOT BLOCKED IN THIS CASE
                 ElevatedButton(
                   onPressed: ()async{
-                    final receipePort = ReceivePort();
-                    await Isolate.spawn(complexTask2, receipePort.sendPort); // spawn means creating a new instance
-                    receipePort.listen((total){
+                    final receivePort = ReceivePort();
+                    await Isolate.spawn(complexTask2, receivePort.sendPort); // spawn means creating a new instance
+                    receivePort.listen((total){
                       debugPrint('Result 2: $total');
                     });
                   },
