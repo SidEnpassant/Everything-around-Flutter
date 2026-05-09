@@ -334,7 +334,8 @@
 //         // ---- THESE FOR BLOC STATE MANAGEMENT CLEAN CODE ----------
 //         // initialRoute: RoutesName.moviesHomeScreen,
 //         // onGenerateRoute: Routes.generateRoute,
-//         // ---- THESE FOR BLOC STATE MANAGEMENT CLEAN CODE ----------
+//         // ---- THESE FOR BLOC STATE MANAGEMENT CLEAN CODE ---
+
 //       );
 //   }
 // }
@@ -347,10 +348,42 @@
 // }
 //
 
-/////// ISOLATES
+/////// ISOLATES , FUTURES , ASYNC , AWAIT , STREAM
 
+// import 'package:flutter/material.dart';
+// import 'Async_Await_Futures/futureHome.dart';
+// import 'isolates/isolate_home_page.dart';
+// import 'package:testapp/streams/streampage.dart';
+//
+// void main() {
+//
+//   runApp(const MyApp());
+// }
+//
+// class MyApp extends StatelessWidget {
+//   const MyApp({super.key});
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//         debugShowCheckedModeBanner: false,
+//         title: 'Flutter Demo',
+//         theme: ThemeData(
+//           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+//           useMaterial3: true,
+//         ),
+//       //home: IsolateHomePage(),
+//       //home: Futurehome(),
+//       home: Streampage(),
+//       );
+//   }
+// }
+
+
+
+/// GO ROUTER
 import 'package:flutter/material.dart';
-import 'isolates/isolate_home_page.dart';
+import 'package:testapp/go_router/project/routes/app_route_config.dart';
 
 void main() {
 
@@ -362,14 +395,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: 'Flutter Demo',
-        theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-          useMaterial3: true,
-        ),
-      home: IsolateHomePage(),
+    return MaterialApp.router(
+      debugShowCheckedModeBanner: false,
+      routeInformationParser: MyAppRouter.returnRouter(true).routeInformationParser,
+      routerDelegate: MyAppRouter.returnRouter(true).routerDelegate,
       );
   }
 }
