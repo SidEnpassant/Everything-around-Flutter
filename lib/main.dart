@@ -351,6 +351,7 @@
 /////// ISOLATES , FUTURES , ASYNC , AWAIT , STREAM
 
 // import 'package:flutter/material.dart';
+// import 'package:testapp/streams/streampage2.dart';
 // import 'Async_Await_Futures/futureHome.dart';
 // import 'isolates/isolate_home_page.dart';
 // import 'package:testapp/streams/streampage.dart';
@@ -374,16 +375,75 @@
 //         ),
 //       //home: IsolateHomePage(),
 //       //home: Futurehome(),
-//       home: Streampage(),
+//       //home: Streampage(),
+//       home: Streampage2(),
+//     );
+//   }
+// }
+
+
+
+// /// GO ROUTER
+// import 'package:flutter/material.dart';
+// import 'package:testapp/go_router/project/routes/app_route_config.dart';
+//
+// void main() {
+//
+//   runApp(const MyApp());
+// }
+//
+// class MyApp extends StatelessWidget {
+//   const MyApp({super.key});
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp.router(
+//       debugShowCheckedModeBanner: false,
+//       routeInformationParser: MyAppRouter.returnRouter(true).routeInformationParser,
+//       routerDelegate: MyAppRouter.returnRouter(true).routerDelegate,
 //       );
 //   }
 // }
 
 
 
-/// GO ROUTER
+///// ------------- WIDGETS AND UI AND LAYOUTBUILDER , MEDIAQUERY--------------\\\\\\\\\
+
+
+// import 'package:flutter/material.dart';
+// import 'package:testapp/LayoutBuilder_and_MediaQuerys/home_screen__L_&_M.dart';
+// import 'package:testapp/bloc_state_management/flutter_bloc_clean_coding_secure_storage_reusable_components_singleton_pattern/view/home/home_screen.dart';
+// import 'package:testapp/widgets_and_UI/new_widgets_screen.dart';
+//
+//
+// void main() {
+//
+//   runApp(const MyApp());
+// }
+//
+// class MyApp extends StatelessWidget {
+//   const MyApp({super.key});
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       debugShowCheckedModeBanner: false,
+//       title: 'Flutter Demo',
+//       theme: ThemeData(
+//         // colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+//         useMaterial3: true,
+//       ),
+//      //home: NewWidgetsScreen(),
+//       home: HomeScreenLM(),
+//     );
+//   }
+// }
+
+
+
+///// -----------  SQFLITE ------------- \\\\
 import 'package:flutter/material.dart';
-import 'package:testapp/go_router/project/routes/app_route_config.dart';
+import 'package:testapp/sqflite/home_page_sqflite.dart';
 
 void main() {
 
@@ -395,10 +455,14 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
-      routeInformationParser: MyAppRouter.returnRouter(true).routeInformationParser,
-      routerDelegate: MyAppRouter.returnRouter(true).routerDelegate,
-      );
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.red),
+        useMaterial3: true,
+      ),
+      home: HomePageSqflite(),
+    );
   }
 }
