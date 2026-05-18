@@ -474,18 +474,67 @@
 
 
 ///// ------------------------ GRAPHQL -----------------------\\\\\\\\\\\
+//
+//
+//
+//
+// import 'package:flutter/material.dart';
+// import 'package:graphql_flutter/graphql_flutter.dart';
+//
+// import 'GraphQL/graphqlpage.dart';
+//
+//
+// void main() {
+//
+//   runApp(const MyApp());
+// }
+//
+// class MyApp extends StatelessWidget {
+//   const MyApp({super.key});
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     final HttpLink httpLink = HttpLink('https://countries.trevorblades.com/');
+//     final ValueNotifier<GraphQLClient> client = ValueNotifier<GraphQLClient>(
+//       GraphQLClient(
+//           link: httpLink as Link ,
+//           cache: GraphQLCache(
+//             store: HiveStore(),
+//           )
+//       )
+//     );
+//     return GraphQLProvider(
+//       client: client,
+//       child: Graphqlpage(),
+//     );
+//   }
+// }
 
 
 
+
+
+
+
+////// ---------------- HIVE DATABASE ------------------ \\\\\\\
 
 import 'package:flutter/material.dart';
-import 'package:graphql_flutter/graphql_flutter.dart';
+import 'package:hive/hive.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:testapp/sqflite/home_page_sqflite.dart';
+import 'package:testapp/websocket/websocketHomePage.dart';
+import 'package:web_socket_channel/io.dart';
 
-import 'GraphQL/graphqlpage.dart';
+import 'hive/hive_home_screen.dart';
+import 'hive/notes_app/hive_notes_app_home.dart';
+import 'hive/notes_app/models/notes_model.dart';
 
-
-void main() {
-
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  var directory = await getApplicationDocumentsDirectory();
+  Hive.init(directory.path);
+  Hive.registerAdapter(NotesModelAdapter());
+  await Hive.openBox<NotesModel>('notes');
   runApp(const MyApp());
 }
 
@@ -494,18 +543,16 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final HttpLink httpLink = HttpLink('https://countries.trevorblades.com/');
-    final ValueNotifier<GraphQLClient> client = ValueNotifier<GraphQLClient>(
-      GraphQLClient(
-          link: httpLink as Link ,
-          cache: GraphQLCache(
-            store: HiveStore(),
-          )
-      )
-    );
-    return GraphQLProvider(
-      client: client,
-      child: Graphqlpage(),
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        //colorScheme: ColorScheme.fromSeed(seedColor: Colors.red),
+        useMaterial3: true,
+      ),
+      //home: HiveHomeScreen(),
+      home: HiveNotesAppHome(),
+
     );
   }
 }
