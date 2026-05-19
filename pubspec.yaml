@@ -63,6 +63,7 @@ dependencies:
   path_provider: ^2.1.5
   hive_flutter: ^1.1.0
   hive_ce_generator: ^1.11.1
+  dio: ^5.9.2
 
 dev_dependencies:
   flutter_test:
