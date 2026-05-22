@@ -557,15 +557,138 @@
 
 
 
-/// --------------- ANIMATIONS --------------- \\\
+/// --------------- ANIMATIONS , MVVM , MVC --------------- \\\
+//
+//
+// import 'package:flutter/material.dart';
+// import 'package:provider/provider.dart';
+// import 'package:testapp/MVC_arch/controllers/todo_controller.dart';
+// import 'package:testapp/MVC_arch/views/todo_list_view.dart';
+// import 'package:testapp/MVVM_arch/viewModels/counter_view_model.dart';
+//
+// import 'MVVM_arch/views/counter_view.dart';
+// import 'animations/screens/home.dart';
+// import 'animations/screens/sandbox.dart';
+//
+// void main() async{
+//   runApp(const MyApp());
+// }
+//
+// class MyApp extends StatefulWidget {
+//   const MyApp({super.key});
+//
+//   @override
+//   State<MyApp> createState() => _MyAppState();
+// }
+//
+// class _MyAppState extends State<MyApp> {
+//   final TodoController _controller = TodoController();
+//   final TextEditingController _textEditingController = TextEditingController();
+//   void _addTodo(){
+//     if(_textEditingController.text.isNotEmpty){
+//       setState(() {
+//         _controller.addTodo(_textEditingController.text);
+//       });
+//     }
+//   }
+//   void _toggleTodoCompleted(int index){
+//     setState(() {
+//       _controller.toggleTodoCompleted(index);
+//     });
+//   }
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       debugShowCheckedModeBanner: false,
+//       title: 'Flutter Demo',
+//       theme: ThemeData(
+//         useMaterial3: true,
+//       ),
+//
+//       //home: TripAnimationsHome(),
+//       // home: ChangeNotifierProvider(
+//       //     create: (context) => CounterViewModel(),
+//       //   child: CounterView(),
+//       // ),
+//       home: Scaffold(
+//         appBar: AppBar(
+//           title: const Text('MVC todo'),
+//         ),
+//         body: Column(
+//           children: [
+//             Padding(
+//                 padding: EdgeInsets.all(8.0),
+//               child: TextField(
+//                 controller: _textEditingController,
+//                 decoration: InputDecoration(
+//                   labelText: 'New Todo',
+//                   suffixIcon: IconButton(
+//                       icon: Icon(Icons.add),
+//                     onPressed: (){
+//                       _addTodo();
+//                       _textEditingController.clear();
+//                     },
+//                   )
+//                 ),
+//               ),
+//             ),
+//             Expanded(
+//                 child: TodoListView(
+//                     todos: _controller.todos,
+//                     onTodoTap: _toggleTodoCompleted,
+//                 )
+//             )
+//           ],
+//         ),
+//       ),
+//     );
+//   }
+// }
+
+//
+//
+// // ------------------ BLOC Listener, Builder and Consumer
+// import 'package:flutter/material.dart';
+//
+// import 'bloc_state_management/bloc_listener_builder_consumer/ui/counter_page.dart';
+//
+//
+//
+// void main() {
+//   runApp(const MyApp());
+// }
+//
+// class MyApp extends StatelessWidget {
+//   const MyApp({super.key});
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//         debugShowCheckedModeBanner: false,
+//         title: 'Flutter Demo',
+//         theme: ThemeData(
+//           brightness: Brightness.dark,
+//
+//           primarySwatch: Colors.blue,
+//           useMaterial3: true,
+//         ),
+//       home: CounterPage(),
+//
+//       );
+//   }
+// }
+//
+//
 
 
+// ------------- BLOC MASTERCLASS ---------------- \\
 import 'package:flutter/material.dart';
 
-import 'animations/screens/home.dart';
-import 'animations/screens/sandbox.dart';
+import 'bloc_state_management/bloc_masterclass/features/home/ui/bloc_masterclass_home.dart';
 
-void main() async{
+
+
+void main() {
   runApp(const MyApp());
 }
 
@@ -575,14 +698,15 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        useMaterial3: true,
-      ),
+        debugShowCheckedModeBanner: false,
+        title: 'Flutter Demo',
+        theme: ThemeData(
 
-      home: TripAnimationsHome(),
-
-    );
+          primarySwatch: Colors.teal,
+          useMaterial3: true,
+        ),
+       home:Home(),
+      );
   }
 }
+
