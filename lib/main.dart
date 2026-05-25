@@ -712,31 +712,31 @@
 //
 
 
-
-/// ----------- UNIT TESTING --------------- \\\
-import 'package:flutter/material.dart';
-import 'package:testapp/unit_test/counter.dart';
-import 'unit_test/a_bit_complex/bit_complex_home_page.dart';
-
-void main() {
-  runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-      ),
-      //home: const MyHomePage(title: 'Flutter Demo Home Page'),
-      home: MyHomePage(),
-    );
-  }
-}
+//
+// /// ----------- UNIT TESTING --------------- \\\
+// import 'package:flutter/material.dart';
+// import 'package:testapp/unit_test/counter.dart';
+// import 'unit_test/a_bit_complex/bit_complex_home_page.dart';
+//
+// void main() {
+//   runApp(const MyApp());
+// }
+//
+// class MyApp extends StatelessWidget {
+//   const MyApp({super.key});
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       debugShowCheckedModeBanner: false,
+//       title: 'Flutter Demo',
+//       theme: ThemeData(
+//         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+//       ),
+//       //home: const MyHomePage(title: 'Flutter Demo Home Page'),
+//       home: MyHomePage(),
+//     );
+//   }
+// }
 //
 // class MyHomePage extends StatefulWidget {
 //   const MyHomePage({super.key, required this.title});
@@ -784,3 +784,39 @@ class MyApp extends StatelessWidget {
 //     );
 //   }
 // }
+
+
+
+
+
+/// ----------- WIDGET TESTING --------------- \\\
+import 'package:flutter/material.dart';
+import 'package:testapp/unit_test/counter.dart';
+import 'package:testapp/widget_test/animation_app/animation_screen.dart';
+import 'widget_test/counter_app/home_page.dart';
+import 'package:testapp/widget_test/complex_api_app/home_screen.dart';
+import 'package:testapp/widget_test/complex_api_app/user_repository.dart';
+
+void main() {
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+      ),
+      //home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      //home: MyHomePage(title: 'widget test counter',),
+      // home: HomeScreen(
+      //   futureUsers: UserRepository().fetchUsers(),
+      // ),
+      home: AnimationScreen(),
+    );
+  }
+}
