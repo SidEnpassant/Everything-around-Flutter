@@ -78,6 +78,10 @@ dev_dependencies:
   flutter_lints: ^5.0.0
   json_serializable: ^6.11.2
   build_runner: ^2.14.1
+  patrol: ^4.6.1
+  automated_integration_test: ^1.0.4
+  integration_test:
+    sdk: flutter
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
