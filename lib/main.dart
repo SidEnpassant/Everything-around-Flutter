@@ -793,7 +793,7 @@
 // import 'package:flutter/material.dart';
 // import 'package:testapp/unit_test/counter.dart';
 // import 'package:testapp/widget_test/animation_app/animation_screen.dart';
-// import 'widget_test/counter_app/home_page.dart';
+// import 'widget_test/counter_app/home_page_rx_dart.dart';
 // import 'package:testapp/widget_test/complex_api_app/home_screen.dart';
 // import 'package:testapp/widget_test/complex_api_app/user_repository.dart';
 //
@@ -823,10 +823,39 @@
 
 
 
+//
+// /// -----------  Integration Testing --------------- \\\
+// import 'package:flutter/material.dart';
+// import 'package:testapp/integration_Test/login_screen.dart';
+//
+//
+// void main() {
+//   runApp(const MyApp());
+// }
+//
+// class MyApp extends StatelessWidget {
+//   const MyApp({super.key});
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       debugShowCheckedModeBanner: false,
+//       title: 'Flutter Demo',
+//       theme: ThemeData(
+//         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+//       ),
+//       home: LoginPage(),
+//     );
+//   }
+// }
 
-/// -----------  Integration Testing --------------- \\\
+
+
+
+
+
+/// ----------- Integration Testing ------------ \\\
 import 'package:flutter/material.dart';
-import 'package:testapp/integration_Test/login_screen.dart';
+import 'package:testapp/rx_dart/home_page_rx_dart.dart';
 
 
 void main() {
@@ -843,7 +872,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: LoginPage(),
+      home: HomePageRxDart(),
     );
   }
 }
