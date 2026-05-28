@@ -848,18 +848,53 @@
 //   }
 // }
 
+//
+// /// ----------- Integration Testing ------------ \\\
+// import 'package:flutter/material.dart';
+// import 'package:testapp/rx_dart/home_page_rx_dart.dart';
+//
+//
+// void main() {
+//   runApp(const MyApp());
+// }
+//
+// class MyApp extends StatelessWidget {
+//   const MyApp({super.key});
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       debugShowCheckedModeBanner: false,
+//       title: 'Flutter Demo',
+//       theme: ThemeData(
+//         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+//       ),
+//       home: HomePageRxDart(),
+//     );
+//   }
+// }
 
 
 
 
-
-/// ----------- Integration Testing ------------ \\\
+/// ----------- FIREBASE ------------ \\\
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
-import 'package:testapp/rx_dart/home_page_rx_dart.dart';
+import 'package:testapp/firebase_notification/home_screen.dart';
 
 
-void main() {
+void main()async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
   runApp(const MyApp());
+}
+@pragma('vm:entry-point')
+Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage messsage)async{
+  await Firebase.initializeApp();
+  print(messsage.notification!.title.toString());
+  print(messsage.notification!.body.toString());
+  print(messsage.data.toString());
 }
 
 class MyApp extends StatelessWidget {
@@ -872,7 +907,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: HomePageRxDart(),
+      home: HomeScreen(),
     );
   }
 }
