@@ -558,92 +558,92 @@
 
 
 /// --------------- ANIMATIONS , MVVM , MVC --------------- \\\
-//
-//
-// import 'package:flutter/material.dart';
-// import 'package:provider/provider.dart';
-// import 'package:testapp/MVC_arch/controllers/todo_controller.dart';
-// import 'package:testapp/MVC_arch/views/todo_list_view.dart';
-// import 'package:testapp/MVVM_arch/viewModels/counter_view_model.dart';
-//
-// import 'MVVM_arch/views/counter_view.dart';
-// import 'animations/screens/home.dart';
-// import 'animations/screens/sandbox.dart';
-//
-// void main() async{
-//   runApp(const MyApp());
-// }
-//
-// class MyApp extends StatefulWidget {
-//   const MyApp({super.key});
-//
-//   @override
-//   State<MyApp> createState() => _MyAppState();
-// }
-//
-// class _MyAppState extends State<MyApp> {
-//   final TodoController _controller = TodoController();
-//   final TextEditingController _textEditingController = TextEditingController();
-//   void _addTodo(){
-//     if(_textEditingController.text.isNotEmpty){
-//       setState(() {
-//         _controller.addTodo(_textEditingController.text);
-//       });
-//     }
-//   }
-//   void _toggleTodoCompleted(int index){
-//     setState(() {
-//       _controller.toggleTodoCompleted(index);
-//     });
-//   }
-//   @override
-//   Widget build(BuildContext context) {
-//     return MaterialApp(
-//       debugShowCheckedModeBanner: false,
-//       title: 'Flutter Demo',
-//       theme: ThemeData(
-//         useMaterial3: true,
-//       ),
-//
-//       //home: TripAnimationsHome(),
-//       // home: ChangeNotifierProvider(
-//       //     create: (context) => CounterViewModel(),
-//       //   child: CounterView(),
-//       // ),
-//       home: Scaffold(
-//         appBar: AppBar(
-//           title: const Text('MVC todo'),
-//         ),
-//         body: Column(
-//           children: [
-//             Padding(
-//                 padding: EdgeInsets.all(8.0),
-//               child: TextField(
-//                 controller: _textEditingController,
-//                 decoration: InputDecoration(
-//                   labelText: 'New Todo',
-//                   suffixIcon: IconButton(
-//                       icon: Icon(Icons.add),
-//                     onPressed: (){
-//                       _addTodo();
-//                       _textEditingController.clear();
-//                     },
-//                   )
-//                 ),
-//               ),
-//             ),
-//             Expanded(
-//                 child: TodoListView(
-//                     todos: _controller.todos,
-//                     onTodoTap: _toggleTodoCompleted,
-//                 )
-//             )
-//           ],
-//         ),
-//       ),
-//     );
-//   }
-// }
+
+
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:testapp/MVC_arch/controllers/todo_controller.dart';
+import 'package:testapp/MVC_arch/views/todo_list_view.dart';
+import 'package:testapp/MVVM_arch/viewModels/counter_view_model.dart';
+
+import 'MVVM_arch/views/counter_view.dart';
+import 'animations/screens/home.dart';
+import 'animations/screens/sandbox.dart';
+
+void main() async{
+  runApp(const MyApp());
+}
+
+class MyApp extends StatefulWidget {
+  const MyApp({super.key});
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  final TodoController _controller = TodoController();
+  final TextEditingController _textEditingController = TextEditingController();
+  void _addTodo(){
+    if(_textEditingController.text.isNotEmpty){
+      setState(() {
+        _controller.addTodo(_textEditingController.text);
+      });
+    }
+  }
+  void _toggleTodoCompleted(int index){
+    setState(() {
+      _controller.toggleTodoCompleted(index);
+    });
+  }
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        useMaterial3: true,
+      ),
+
+      home: TripAnimationsHome(),
+      // home: ChangeNotifierProvider(
+      //     create: (context) => CounterViewModel(),
+      //   child: CounterView(),
+      // ),
+      // home: Scaffold(
+      //   appBar: AppBar(
+      //     title: const Text('MVC todo'),
+      //   ),
+      //   body: Column(
+      //     children: [
+      //       Padding(
+      //           padding: EdgeInsets.all(8.0),
+      //         child: TextField(
+      //           controller: _textEditingController,
+      //           decoration: InputDecoration(
+      //             labelText: 'New Todo',
+      //             suffixIcon: IconButton(
+      //                 icon: Icon(Icons.add),
+      //               onPressed: (){
+      //                 _addTodo();
+      //                 _textEditingController.clear();
+      //               },
+      //             )
+      //           ),
+      //         ),
+      //       ),
+      //       Expanded(
+      //           child: TodoListView(
+      //               todos: _controller.todos,
+      //               onTodoTap: _toggleTodoCompleted,
+      //           )
+      //       )
+      //     ],
+      //   ),
+      // ),
+    );
+  }
+}
 
 //
 //
@@ -849,7 +849,7 @@
 // }
 
 //
-// /// ----------- Integration Testing ------------ \\\
+// /// ----------- RX DART ------------ \\\
 // import 'package:flutter/material.dart';
 // import 'package:testapp/rx_dart/home_page_rx_dart.dart';
 //
@@ -915,33 +915,36 @@
 
 
 
-
-
-
-/// ----------- FIREBASE AUTHENTICATION ------------ \\\
-import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter/material.dart';
-import 'package:testapp/firebase_authentication/widget_tree.dart';
-
-
-Future<void> main()async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
-  runApp(const MyApp());
-}
-
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-      ),
-      home: WidgetTree(),
-    );
-  }
-}
+//
+//
+//
+// /// ----------- FIREBASE AUTHENTICATION ------------ \\\
+// import 'package:firebase_core/firebase_core.dart';
+// import 'package:flutter/material.dart';
+// import 'package:testapp/firebase_authentication/widget_tree.dart';
+// import 'package:testapp/firebase_options.dart';
+//
+//
+// Future<void> main()async {
+//   WidgetsFlutterBinding.ensureInitialized();
+//   await Firebase.initializeApp(
+//     options: DefaultFirebaseOptions.currentPlatform,
+//   );
+//   runApp(const MyApp());
+// }
+//
+//
+// class MyApp extends StatelessWidget {
+//   const MyApp({super.key});
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       debugShowCheckedModeBanner: false,
+//       title: 'Flutter Demo',
+//       theme: ThemeData(
+//         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+//       ),
+//       home: WidgetTree(),
+//     );
+//   }
+// }
